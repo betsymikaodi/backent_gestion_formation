@@ -1,0 +1,261 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "G_apprenant API",
+  "dateExported": "2025-09-17T08:05:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "id": "apprenants-folder",
+      "name": "1. Apprenants",
+      "containerId": "",
+      "created": "2025-09-17T08:05:00.000Z",
+      "sortNum": 10000
+    },
+    {
+      "id": "formations-folder", 
+      "name": "2. Formations",
+      "containerId": "",
+      "created": "2025-09-17T08:05:00.000Z",
+      "sortNum": 20000
+    },
+    {
+      "id": "inscriptions-folder",
+      "name": "3. Inscriptions", 
+      "containerId": "",
+      "created": "2025-09-17T08:05:00.000Z",
+      "sortNum": 30000
+    },
+    {
+      "id": "paiements-folder",
+      "name": "4. Paiements",
+      "containerId": "",
+      "created": "2025-09-17T08:05:00.000Z", 
+      "sortNum": 40000
+    }
+  ],
+  "requests": [
+    {
+      "id": "get-all-apprenants",
+      "name": "GET - Tous les apprenants",
+      "url": "http://localhost:8080/api/apprenants",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "apprenants-folder"
+    },
+    {
+      "id": "get-apprenant-by-id",
+      "name": "GET - Apprenant par ID",
+      "url": "http://localhost:8080/api/apprenants/1",
+      "method": "GET", 
+      "sortNum": 20000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "apprenants-folder"
+    },
+    {
+      "id": "create-apprenant",
+      "name": "POST - Créer apprenant",
+      "url": "http://localhost:8080/api/apprenants",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nom\": \"NOUVEAU\",\n  \"prenom\": \"Etudiant\",\n  \"email\": \"nouveau.etudiant@email.com\",\n  \"telephone\": \"+261 34 99 88 77\",\n  \"adresse\": \"Antananarivo, Madagascar\",\n  \"dateNaissance\": \"1995-06-15\",\n  \"cin\": \"999888777666\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "apprenants-folder"
+    },
+    {
+      "id": "update-apprenant",
+      "name": "PUT - Modifier apprenant",
+      "url": "http://localhost:8080/api/apprenants/1",
+      "method": "PUT",
+      "sortNum": 40000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nom\": \"RAKOTO\",\n  \"prenom\": \"Jean Pierre\",\n  \"email\": \"jeanpierre.rakoto@email.com\",\n  \"telephone\": \"+261 34 12 345 67\",\n  \"adresse\": \"Lot ABC Bis Antananarivo\",\n  \"dateNaissance\": \"1995-05-15\",\n  \"cin\": \"123456789012\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "apprenants-folder"
+    },
+    {
+      "id": "delete-apprenant",
+      "name": "DELETE - Supprimer apprenant",
+      "url": "http://localhost:8080/api/apprenants/6",
+      "method": "DELETE",
+      "sortNum": 50000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "apprenants-folder"
+    },
+    {
+      "id": "get-all-formations",
+      "name": "GET - Toutes les formations",
+      "url": "http://localhost:8080/api/formations",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "formations-folder"
+    },
+    {
+      "id": "create-formation",
+      "name": "POST - Créer formation",
+      "url": "http://localhost:8080/api/formations",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nom\": \"Intelligence Artificielle\",\n  \"description\": \"Formation complète sur l'IA et Machine Learning\",\n  \"duree\": 150,\n  \"frais\": 750000.00\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "formations-folder"
+    },
+    {
+      "id": "get-all-inscriptions",
+      "name": "GET - Toutes les inscriptions",
+      "url": "http://localhost:8080/api/inscriptions",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "inscriptions-folder"
+    },
+    {
+      "id": "create-inscription",
+      "name": "POST - Créer inscription",
+      "url": "http://localhost:8080/api/inscriptions",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"apprenantId\": 2,\n  \"formationId\": 3,\n  \"droitInscription\": 20000.00\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "inscriptions-folder"
+    },
+    {
+      "id": "get-all-paiements",
+      "name": "GET - Tous les paiements",
+      "url": "http://localhost:8080/api/paiements",
+      "method": "GET",
+      "sortNum": 100000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "paiements-folder"
+    },
+    {
+      "id": "create-paiement",
+      "name": "POST - Créer paiement",
+      "url": "http://localhost:8080/api/paiements",
+      "method": "POST",
+      "sortNum": 110000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"inscriptionId\": 1,\n  \"montant\": 125000.00,\n  \"modePaiement\": \"Mobile Money\",\n  \"module\": \"Module 4\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "paiements-folder"
+    }
+  ]
+}
