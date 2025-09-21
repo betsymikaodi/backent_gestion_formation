@@ -160,6 +160,41 @@ POST   /api/paiements            # Nouveau paiement
 GET    /api/paiements/{id}       # Détails d'un paiement
 ```
 
+# Backend Gestion Formation
+
+## API Endpoints
+
+The backend provides the following main API endpoints:
+
+- **Authentication**
+  - `POST /api/login` : User login
+  - `POST /api/register` : User registration
+
+- **Formations**
+  - `GET /api/formations` : List all formations
+  - `GET /api/formations/:id` : Get details of a formation
+  - `POST /api/formations` : Create a new formation
+  - `PUT /api/formations/:id` : Update a formation
+  - `DELETE /api/formations/:id` : Delete a formation
+
+- **Participants**
+  - `GET /api/participants` : List all participants
+  - `GET /api/participants/:id` : Get participant details
+  - `POST /api/participants` : Add a new participant
+  - `PUT /api/participants/:id` : Update participant info
+  - `DELETE /api/participants/:id` : Remove a participant
+
+- **Sessions**
+  - `GET /api/sessions` : List all sessions
+  - `POST /api/sessions` : Create a new session
+  - `PUT /api/sessions/:id` : Update session details
+  - `DELETE /api/sessions/:id` : Delete a session
+
+- **Other endpoints**
+  - Additional endpoints may exist for managing instructors, attendance, or statistics.
+
+> For detailed request/response formats, see the controller files or API documentation.
+
 ## 🔧 Exemples d'Utilisation
 
 ### Créer un Apprenant

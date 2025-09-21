@@ -11,4 +11,6 @@ public interface InscriptionService {
     List<Inscription> getByApprenant(Long apprenantId);
     Inscription confirm(Long id);
     Inscription cancel(Long id);
+    Inscription update(Long id, java.math.BigDecimal droitInscription, String statut);
+    void delete(Long id);
 }

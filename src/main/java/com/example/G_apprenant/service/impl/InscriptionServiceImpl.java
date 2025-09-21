@@ -67,4 +67,30 @@ public class InscriptionServiceImpl implements InscriptionService {
         i.setStatut("Annulé");
         return inscriptionRepo.save(i);
     }
+
+
+
+    @Override
+    public Inscription update(Long id, BigDecimal droitInscription, String statut) {
+        Inscription i = getById(id);
+        if (droitInscription != null) {
+            i.setDroitInscription(droitInscription);
+        }
+        if (statut != null && !statut.isBlank()) {
+            if (!("En attente".equals(statut) || "Confirmé".equals(statut) || "Annulé".equals(statut))) {
+                throw new IllegalArgumentException("Statut invalide: " + statut);
+            }
+            i.setStatut(statut);
+        }
+        return inscriptionRepo.save(i);
+    }
+
+    @Override
+    public void delete(Long id) {
+        // Vérifier l'existence avant suppression pour lever une 404 cohérente
+        if (!inscriptionRepo.existsById(id)) {
+            throw new ResourceNotFoundException("Inscription non trouvée id=" + id);
+        }
+        inscriptionRepo.deleteById(id);
+    }
 }
