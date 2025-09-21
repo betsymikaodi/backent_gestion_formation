@@ -56,8 +56,16 @@ public class FormationController {
     public ResponseEntity<Formation> update(
             @Parameter(description = "ID de la formation")
             @PathVariable Long id, 
-            @Valid @RequestBody Formation f) {
-        return ResponseEntity.ok(service.update(id, f));
+            @Valid @RequestBody FormationRequest request) {
+        
+        // Créer un objet Formation à partir du FormationRequest
+        Formation formation = new Formation();
+        formation.setNom(request.getNom());
+        formation.setDescription(request.getDescription());
+        formation.setDuree(request.getDuree());
+        formation.setFrais(request.getFrais());
+        
+        return ResponseEntity.ok(service.update(id, formation));
     }
 
     @DeleteMapping("/{id}")

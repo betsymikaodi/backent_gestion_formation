@@ -62,9 +62,19 @@ public class ApprenantController {
     @Operation(summary = "Mettre à jour un apprenant")
     public ResponseEntity<Apprenant> update(
             @Parameter(description = "ID de l'apprenant")
-            @PathVariable Long id, 
-            @Valid @RequestBody Apprenant a) {
-        return ResponseEntity.ok(service.update(id, a));
+            @PathVariable Long id,
+            @Valid @RequestBody ApprenantRequest request) {
+        Apprenant apprenant = new Apprenant();
+        apprenant.setNom(request.getNom());
+        apprenant.setPrenom(request.getPrenom());
+        apprenant.setEmail(request.getEmail());
+        apprenant.setTelephone(request.getTelephone());
+        apprenant.setAdresse(request.getAdresse());
+        apprenant.setCin(request.getCin());
+        if (request.getDateNaissance() != null && !request.getDateNaissance().isEmpty()) {
+            apprenant.setDateNaissance(LocalDate.parse(request.getDateNaissance()));
+        }
+        return ResponseEntity.ok(service.update(id, apprenant));
     }
 
     @DeleteMapping("/{id}")
