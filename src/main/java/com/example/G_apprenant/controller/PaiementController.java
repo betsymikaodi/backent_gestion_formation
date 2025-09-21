@@ -22,8 +22,32 @@ public class PaiementController {
         return ResponseEntity.ok(service.create(req.getInscriptionId(), req.getMontant(), req.getModePaiement(), req.getModule()));
     }
 
+    @GetMapping
+    public ResponseEntity<java.util.List<Paiement>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Paiement> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getById(id));
+    }
+
+
+
     @GetMapping("/inscription/{id}")
     public ResponseEntity<List<Paiement>> getByInscription(@PathVariable Long id) {
         return ResponseEntity.ok(service.getByInscription(id));
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Paiement> update(@PathVariable Long id, @RequestBody com.example.G_apprenant.dto.PaiementUpdateRequest req) {
+        return ResponseEntity.ok(service.update(id, req.getMontant(), req.getModePaiement(), req.getModule()));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

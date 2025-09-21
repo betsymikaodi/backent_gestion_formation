@@ -57,4 +57,32 @@ public class PaiementServiceImpl implements PaiementService {
     public List<Paiement> getByInscription(Long inscriptionId) {
         return paiementRepo.findByInscriptionIdInscription(inscriptionId);
     }
+
+    @Override
+    public java.util.List<Paiement> getAll() {
+        return paiementRepo.findAll();
+    }
+
+    @Override
+    public Paiement getById(Long id) {
+        return paiementRepo.findById(id)
+                .orElseThrow(() -> new com.example.G_apprenant.exception.ResourceNotFoundException("Paiement non trouvé id=" + id));
+    }
+
+    @Override
+    public Paiement update(Long id, java.math.BigDecimal montant, String modePaiement, String module) {
+        Paiement p = getById(id);
+        if (montant != null) p.setMontant(montant);
+        if (modePaiement != null && !modePaiement.isBlank()) p.setModePaiement(modePaiement);
+        if (module != null && !module.isBlank()) p.setModule(module);
+        return paiementRepo.save(p);
+    }
+
+    @Override
+    public void delete(Long id) {
+        if (!paiementRepo.existsById(id)) {
+            throw new com.example.G_apprenant.exception.ResourceNotFoundException("Paiement non trouvé id=" + id);
+        }
+        paiementRepo.deleteById(id);
+    }
 }

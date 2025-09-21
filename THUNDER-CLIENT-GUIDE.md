@@ -232,6 +232,13 @@ http://localhost:8080/api/formations/stats/moyenne-prix
 - **Headers** : Aucun
 - **Body** : Aucun
 
+### ✅ **GET** - Obtenir les paiements d'une inscription
+- **URL** : `http://localhost:8080/api/paiements/inscription/1`
+- **Method** : `GET`
+- **Headers** : Aucun
+- **Body** : Aucun
+
+
 ### ✅ **POST** - Enregistrer un nouveau paiement
 - **URL** : `http://localhost:8080/api/paiements`
 - **Method** : `POST`
@@ -256,10 +263,9 @@ http://localhost:8080/api/formations/stats/moyenne-prix
   ```
   Content-Type: application/json
   ```
-- **Body (JSON)** :
+- **Body (JSON - champs optionnels)** :
   ```json
   {
-    "inscriptionId": 1,
     "montant": 130000.00,
     "modePaiement": "Virement",
     "module": "Module 1"

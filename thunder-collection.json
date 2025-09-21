@@ -12,7 +12,7 @@
       "sortNum": 10000
     },
     {
-      "id": "formations-folder", 
+      "id": "formations-folder",
       "name": "2. Formations",
       "containerId": "",
       "created": "2025-09-17T08:05:00.000Z",
@@ -20,7 +20,7 @@
     },
     {
       "id": "inscriptions-folder",
-      "name": "3. Inscriptions", 
+      "name": "3. Inscriptions",
       "containerId": "",
       "created": "2025-09-17T08:05:00.000Z",
       "sortNum": 30000
@@ -29,7 +29,7 @@
       "id": "paiements-folder",
       "name": "4. Paiements",
       "containerId": "",
-      "created": "2025-09-17T08:05:00.000Z", 
+      "created": "2025-09-17T08:05:00.000Z",
       "sortNum": 40000
     }
   ],
@@ -56,7 +56,7 @@
       "id": "get-apprenant-by-id",
       "name": "GET - Apprenant par ID",
       "url": "http://localhost:8080/api/apprenants/1",
-      "method": "GET", 
+      "method": "GET",
       "sortNum": 20000,
       "created": "2025-09-17T08:05:00.000Z",
       "modified": "2025-09-17T08:05:00.000Z",
@@ -252,6 +252,83 @@
       "body": {
         "type": "json",
         "raw": "{\n  \"inscriptionId\": 1,\n  \"montant\": 125000.00,\n  \"modePaiement\": \"Mobile Money\",\n  \"module\": \"Module 4\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "paiements-folder"
+    },
+    {
+      "id": "get-paiement-by-id",
+      "name": "GET - Paiement par ID",
+      "url": "http://localhost:8080/api/paiements/1",
+      "method": "GET",
+      "sortNum": 120000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "paiements-folder"
+    },
+    {
+      "id": "get-paiements-by-inscription",
+      "name": "GET - Paiements par inscription",
+      "url": "http://localhost:8080/api/paiements/inscription/1",
+      "method": "GET",
+      "sortNum": 130000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "paiements-folder"
+    },
+    {
+      "id": "update-paiement",
+      "name": "PUT - Modifier paiement",
+      "url": "http://localhost:8080/api/paiements/1",
+      "method": "PUT",
+      "sortNum": 140000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"montant\": 9100.00,\n  \"modePaiement\": \"Virement\",\n  \"module\": \"Module 2\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "paiements-folder"
+    },
+    {
+      "id": "delete-paiement",
+      "name": "DELETE - Supprimer paiement",
+      "url": "http://localhost:8080/api/paiements/1",
+      "method": "DELETE",
+      "sortNum": 150000,
+      "created": "2025-09-17T08:05:00.000Z",
+      "modified": "2025-09-17T08:05:00.000Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
         "form": []
       },
       "tests": [],
