@@ -8580,3 +8580,58 @@ org.springframework.web.servlet.resource.NoResourceFoundException: No static res
     where
         f1_0.id_formation=?
 2025-09-24 13:40:38 - Completed 200 OK
+2025-09-24 13:42:11 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-09-24 13:42:11 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-24 13:42:11 - Graceful shutdown complete
+2025-09-24 13:42:11 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-24 13:42:11 - HikariPool-1 - Shutdown initiated...
+2025-09-24 13:42:11 - HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.5)
+
+2025-09-24 13:42:11 - Starting GApprenantApplication using Java 17.0.16 with PID 84519 (/media/fandresena/Data/projet/backent_gestion_formation/target/classes started by fandresena in /media/fandresena/Data/projet/backent_gestion_formation)
+2025-09-24 13:42:11 - No active profile set, falling back to 1 default profile: "default"
+2025-09-24 13:42:12 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-24 13:42:12 - Finished Spring Data repository scanning in 31 ms. Found 5 JPA repository interfaces.
+2025-09-24 13:42:12 - Tomcat initialized with port 8080 (http)
+2025-09-24 13:42:12 - Starting service [Tomcat]
+2025-09-24 13:42:12 - Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-09-24 13:42:12 - Initializing Spring embedded WebApplicationContext
+2025-09-24 13:42:12 - Root WebApplicationContext: initialization completed in 766 ms
+2025-09-24 13:42:12 - Filter 'webMvcObservationFilter' configured for use
+2025-09-24 13:42:12 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-24 13:42:12 - HHH000026: Second-level cache disabled
+2025-09-24 13:42:12 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-24 13:42:12 - HikariPool-2 - Starting...
+2025-09-24 13:42:12 - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@7be396d0
+2025-09-24 13:42:12 - HikariPool-2 - Start completed.
+2025-09-24 13:42:12 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-24 13:42:12 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-24 13:42:12 - addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@59cf8ad2) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@8a2e01b)
+2025-09-24 13:42:12 - addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@64390e1f) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@30b415e)
+2025-09-24 13:42:12 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-24 13:42:13 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-24 13:42:13 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-24 13:42:13 - 57 mappings in 'requestMappingHandlerMapping'
+2025-09-24 13:42:13 - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2025-09-24 13:42:13 - Exposing 3 endpoints beneath base path '/actuator'
+2025-09-24 13:42:14 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-09-24 13:42:14 - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-09-24 13:42:14 - LiveReload server is running on port 35729
+2025-09-24 13:42:14 - Tomcat started on port 8080 (http) with context path '/api'
+2025-09-24 13:42:14 - Started GApprenantApplication in 2.68 seconds (process running for 1184.386)
+2025-09-24 13:42:14 - Condition evaluation unchanged
