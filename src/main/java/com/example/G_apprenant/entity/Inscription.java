@@ -2,9 +2,11 @@ package com.example.G_apprenant.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -41,6 +43,10 @@ public class Inscription {
     @DecimalMin(value = "0.0", inclusive = true, message = "Le droit d'inscription ne peut pas être négatif")
     @Column(name = "droit_inscription", precision = 10, scale = 2)
     private BigDecimal droitInscription = BigDecimal.ZERO;
+
+    @CreationTimestamp
+    @Column(name = "date_now", nullable = false, updatable = false)
+    private LocalDateTime dateNow;
 
     @OneToMany(mappedBy = "inscription", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
@@ -117,6 +123,10 @@ public class Inscription {
 
     public void setPaiements(Set<Paiement> paiements) {
         this.paiements = paiements;
+    }
+
+    public LocalDateTime getDateNow() {
+        return dateNow;
     }
 
     // Méthodes utilitaires

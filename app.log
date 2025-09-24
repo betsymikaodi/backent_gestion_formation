@@ -8635,3 +8635,8 @@ org.springframework.web.servlet.resource.NoResourceFoundException: No static res
 2025-09-24 13:42:14 - Tomcat started on port 8080 (http) with context path '/api'
 2025-09-24 13:42:14 - Started GApprenantApplication in 2.68 seconds (process running for 1184.386)
 2025-09-24 13:42:14 - Condition evaluation unchanged
+2025-09-24 13:44:51 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-24 13:44:51 - Graceful shutdown complete
+2025-09-24 13:44:51 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-24 13:44:51 - HikariPool-2 - Shutdown initiated...
+2025-09-24 13:44:51 - HikariPool-2 - Shutdown completed.

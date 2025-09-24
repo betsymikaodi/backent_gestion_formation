@@ -27,7 +27,7 @@ public class FormationServiceImpl implements FormationService {
 
     @Override
     public List<Formation> findAll() {
-        return formationRepository.findAll();
+        return formationRepository.findAllByOrderByDateNowDesc();
     }
 
     @Override

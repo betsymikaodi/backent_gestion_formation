@@ -41,6 +41,7 @@ public interface InscriptionRepository extends JpaRepository<Inscription, Long>,
     // Recherches avec tri
     List<Inscription> findAllByOrderByDateInscriptionDesc();
     List<Inscription> findAllByOrderByDateInscriptionAsc();
+    List<Inscription> findAllByOrderByDateNowDesc();
     List<Inscription> findByStatutOrderByDateInscriptionDesc(String statut);
     List<Inscription> findByApprenantIdApprenantOrderByDateInscriptionDesc(Long idApprenant);
     

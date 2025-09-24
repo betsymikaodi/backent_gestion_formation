@@ -32,6 +32,7 @@ public interface FormationRepository extends JpaRepository<Formation, Long>, Jpa
     List<Formation> findAllByOrderByDureeAsc();
     List<Formation> findAllByOrderByDureeDesc();
     List<Formation> findAllByOrderByNomAsc();
+    List<Formation> findAllByOrderByDateNowDesc();
     
     // Recherches combinées avec tri
     List<Formation> findByNomContainingIgnoreCaseOrderByFraisAsc(String nom);

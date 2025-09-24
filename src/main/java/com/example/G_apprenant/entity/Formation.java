@@ -3,7 +3,9 @@ package com.example.G_apprenant.entity;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -34,6 +36,10 @@ public class Formation {
     @DecimalMin(value = "0.0", inclusive = false, message = "Les frais doivent être positifs")
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal frais;
+
+    @CreationTimestamp
+    @Column(name = "date_now", nullable = false, updatable = false)
+    private LocalDateTime dateNow;
 
     @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
@@ -91,6 +97,10 @@ public class Formation {
 
     public Set<Inscription> getInscriptions() {
         return inscriptions;
+    }
+
+    public LocalDateTime getDateNow() {
+        return dateNow;
     }
 
     public void setInscriptions(Set<Inscription> inscriptions) {

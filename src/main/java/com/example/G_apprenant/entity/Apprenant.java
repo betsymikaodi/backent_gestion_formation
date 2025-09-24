@@ -1,9 +1,11 @@
 package com.example.G_apprenant.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -49,6 +51,10 @@ public class Apprenant {
     @Size(max = 20, message = "Le CIN ne peut pas dépasser 20 caractères")
     @Column(nullable = false, unique = true, length = 20)
     private String cin;
+
+    @CreationTimestamp
+    @Column(name = "date_now", nullable = false, updatable = false)
+    private java.time.LocalDateTime dateNow;
 
     @OneToMany(mappedBy = "apprenant", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
@@ -134,6 +140,10 @@ public class Apprenant {
 
     public void setInscriptions(Set<Inscription> inscriptions) {
         this.inscriptions = inscriptions;
+    }
+
+    public java.time.LocalDateTime getDateNow() {
+        return dateNow;
     }
 
     // Méthodes utilitaires

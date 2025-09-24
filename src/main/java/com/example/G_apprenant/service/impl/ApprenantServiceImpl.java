@@ -29,7 +29,7 @@ public class ApprenantServiceImpl implements ApprenantService {
 
     @Override
     public List<Apprenant> getAll() {
-        return repo.findAll();
+        return repo.findAllByOrderByDateNowDesc();
     }
 
     @Override

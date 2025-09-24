@@ -60,7 +60,7 @@ public class PaiementServiceImpl implements PaiementService {
 
     @Override
     public java.util.List<Paiement> getAll() {
-        return paiementRepo.findAll();
+        return paiementRepo.findAllByOrderByDateNowDesc();
     }
 
     @Override

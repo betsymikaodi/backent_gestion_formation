@@ -43,6 +43,7 @@ public interface PaiementRepository extends JpaRepository<Paiement, Long>, JpaSp
     
     // Recherches avec tri
     List<Paiement> findAllByOrderByDatePaiementDesc();
+    List<Paiement> findAllByOrderByDateNowDesc();
     List<Paiement> findAllByOrderByMontantDesc();
     List<Paiement> findByInscriptionIdInscriptionOrderByDatePaiementDesc(Long idInscription);
     List<Paiement> findByInscriptionIdInscriptionOrderByMontantDesc(Long idInscription);

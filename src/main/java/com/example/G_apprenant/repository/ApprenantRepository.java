@@ -49,6 +49,7 @@ public interface ApprenantRepository extends JpaRepository<Apprenant, Long>, Jpa
     List<Apprenant> findAllByOrderByPrenomAsc();
     List<Apprenant> findAllByOrderByDateNaissanceDesc();
     List<Apprenant> findByNomContainingIgnoreCaseOrderByPrenomAsc(String nom);
+    List<Apprenant> findAllByOrderByDateNowDesc();
     
     // Recherches avec pagination
     Page<Apprenant> findByNomContainingIgnoreCase(String nom, Pageable pageable);

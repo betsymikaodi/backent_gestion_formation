@@ -2,7 +2,9 @@ package com.example.G_apprenant.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -37,6 +39,10 @@ public class Paiement {
     @Pattern(regexp = "Module [1-4]", message = "Le module doit être: Module 1, Module 2, Module 3 ou Module 4")
     @Column(length = 20)
     private String module = "Module 1";
+
+    @CreationTimestamp
+    @Column(name = "date_now", nullable = false, updatable = false)
+    private LocalDateTime dateNow;
 
     @PrePersist
     public void prePersist() {
@@ -100,6 +106,10 @@ public class Paiement {
 
     public void setModule(String module) {
         this.module = module;
+    }
+
+    public LocalDateTime getDateNow() {
+        return dateNow;
     }
 
     // Méthodes utilitaires

@@ -46,7 +46,7 @@ public class InscriptionServiceImpl implements InscriptionService {
 
     @Override
     public List<Inscription> getAll() {
-        return inscriptionRepo.findAll();
+        return inscriptionRepo.findAllByOrderByDateNowDesc();
     }
 
     @Override
