@@ -1,0 +1,1 @@
+{"token":"eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJ1c2VySWQiOjYsInN1YiI6ImFkbWluLmNydWQuMTc1ODcwMjkxNUBleGFtcGxlLmNvbSIsImlhdCI6MTc1ODcwMjkxNiwiZXhwIjoxNzU4Nzg5MzE2fQ.HpafF78FidJzCCrPpF8IiGfzVDitsbmL8rAYOMuH4Rk","type":"Bearer","idUtilisateur":null,"email":null,"prenom":"Admin","nom":"Crud","role":"ADMIN","statut":null,"message":"Connexion réussie","success":true}

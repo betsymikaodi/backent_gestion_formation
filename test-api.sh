@@ -65,19 +65,19 @@ test_endpoint "GET" "/paiements/inscription/1" "Paiements par inscription"
 
 # Test Swagger
 echo -e "\n${BLUE}Testing: Documentation Swagger${NC}"
-swagger_response=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/swagger-ui.html")
+swagger_response=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/swagger-ui/index.html")
 if [ "$swagger_response" = "200" ]; then
     echo -e "${GREEN}✅ SUCCESS - Swagger UI accessible${NC}"
-    echo "   📚 URL: $BASE_URL/swagger-ui.html"
+    echo "   📚 URL: $BASE_URL/swagger-ui/index.html"
 else
     echo -e "${RED}❌ FAILED - Swagger UI non accessible (HTTP $swagger_response)${NC}"
 fi
 
 # Test API docs
-api_docs_response=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/api-docs")
+api_docs_response=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/v3/api-docs")
 if [ "$api_docs_response" = "200" ]; then
     echo -e "${GREEN}✅ SUCCESS - API docs accessible${NC}"
-    echo "   📋 URL: $BASE_URL/api-docs"
+    echo "   📋 URL: $BASE_URL/v3/api-docs"
 else
     echo -e "${RED}❌ FAILED - API docs non accessible (HTTP $api_docs_response)${NC}"
 fi
@@ -86,8 +86,8 @@ fi
 echo -e "\n📊 RÉSUMÉ"
 echo "==========="
 echo -e "🌐 API Base URL: $BASE_URL"
-echo -e "📚 Swagger UI: $BASE_URL/swagger-ui.html"
-echo -e "📋 API Docs: $BASE_URL/api-docs"
+echo -e "📚 Swagger UI: $BASE_URL/swagger-ui/index.html"
+echo -e "📋 API Docs: $BASE_URL/v3/api-docs"
 echo -e "⚡ Thunder Client: Importez thunder-collection.json"
 
 echo -e "\n${GREEN}✨ Tests terminés !${NC}"

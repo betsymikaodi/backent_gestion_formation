@@ -43,7 +43,7 @@ public class FormationController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id:\\d+}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Obtenir une formation par ID")
     public ResponseEntity<Formation> getById(
             @Parameter(description = "ID de la formation")
@@ -51,7 +51,7 @@ public class FormationController {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{id:\\d+}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Mettre à jour une formation")
     public ResponseEntity<Formation> update(
             @Parameter(description = "ID de la formation")
@@ -68,12 +68,33 @@ public class FormationController {
         return ResponseEntity.ok(service.update(id, formation));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id:\\d+}")
     @Operation(summary = "Supprimer une formation")
     public ResponseEntity<?> delete(
             @Parameter(description = "ID de la formation")
             @PathVariable Long id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // Rechercher des formations par nom (ex: /formations/search/nom?nom=Web)
+    @GetMapping(value = "/search/nom", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Rechercher des formations par nom (contient)")
+    public ResponseEntity<List<Formation>> searchByNom(@RequestParam("nom") String nom) {
+        return ResponseEntity.ok(service.findByNomContaining(nom));
+    }
+
+    // Formations populaires (ex: /formations/populaires?limit=5)
+    @GetMapping(value = "/populaires", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Lister les formations populaires")
+    public ResponseEntity<List<Formation>> getPopulaires(@RequestParam(name = "limit", defaultValue = "5") int limit) {
+        return ResponseEntity.ok(service.findMostPopular(limit));
+    }
+
+    // Formations moins chères (ex: /formations/moins-cheres?limit=5)
+    @GetMapping(value = "/moins-cheres", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Lister les formations les moins chères")
+    public ResponseEntity<List<Formation>> getMoinsCheres(@RequestParam(name = "limit", defaultValue = "5") int limit) {
+        return ResponseEntity.ok(service.findCheapest(limit));
     }
 }
