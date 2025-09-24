@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict ByaHdaDkb7eWXnDwrvkNGlMkEqcN94XyaCCV6cIiAJia5Z5XdnUoRXeemTyhANe
+\restrict U7pR4M9rBJDLv2lNkzROrlVxVfb6sD2sS7j2B4RLldmcJxiO6gr0TeWa0oZ8eNZ
 
 -- Dumped from database version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
@@ -176,6 +176,55 @@ ALTER SEQUENCE public.paiement_id_paiement_seq OWNED BY public.paiement.id_paiem
 
 
 --
+-- Name: utilisateurs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.utilisateurs (
+    id_utilisateur bigint NOT NULL,
+    email character varying(255) NOT NULL,
+    mot_de_passe_hash character varying(255) NOT NULL,
+    prenom character varying(100) NOT NULL,
+    nom character varying(100) NOT NULL,
+    role character varying(20) DEFAULT 'USER'::character varying NOT NULL,
+    derniere_connexion timestamp without time zone,
+    tentatives_connexion_echec integer DEFAULT 0,
+    compte_verrouille boolean DEFAULT false,
+    token_reinitialisation character varying(255),
+    token_expiration timestamp without time zone,
+    telephone character varying(20),
+    statut character varying(20) DEFAULT 'ACTIF'::character varying NOT NULL,
+    email_verifie boolean DEFAULT false,
+    date_creation timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    date_modification timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    preferences_langue character varying(5) DEFAULT 'fr'::character varying,
+    theme_preference character varying(10) DEFAULT 'LIGHT'::character varying
+);
+
+
+ALTER TABLE public.utilisateurs OWNER TO postgres;
+
+--
+-- Name: utilisateurs_id_utilisateur_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.utilisateurs_id_utilisateur_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.utilisateurs_id_utilisateur_seq OWNER TO postgres;
+
+--
+-- Name: utilisateurs_id_utilisateur_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.utilisateurs_id_utilisateur_seq OWNED BY public.utilisateurs.id_utilisateur;
+
+
+--
 -- Name: apprenant id_apprenant; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -204,6 +253,13 @@ ALTER TABLE ONLY public.paiement ALTER COLUMN id_paiement SET DEFAULT nextval('p
 
 
 --
+-- Name: utilisateurs id_utilisateur; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.utilisateurs ALTER COLUMN id_utilisateur SET DEFAULT nextval('public.utilisateurs_id_utilisateur_seq'::regclass);
+
+
+--
 -- Data for Name: apprenant; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -216,6 +272,8 @@ COPY public.apprenant (id_apprenant, nom, prenom, email, telephone, adresse, dat
 6	NOFY	Elson	elsonnofy@gmail.com	+261 34 00 11 22	Ambodirano	2003-01-01	201032120421
 8	RAZAFY	Mialy	mialy.razafy@test.com	+261 34 99 88 77	Antananarivo Madagascar	2001-06-15	301061523456
 9	dieu donne	fandresena	rafandresenadieudonne@gmail.com	0388243781	IG006/3204 Igaga	2004-06-17	325222222442
+11	NOUVEAU	Etudiant	nouveau.etudiant.1758703169@example.com	+26134998877	Antananarivo, Madagascar	1995-06-15	999888777666
+12	NOUVEAU 2	Etudiant	nouveau2.etudiant@example.com	+26134998877	Antananarivo, Madagascar	1995-06-15	999888777667
 \.
 
 
@@ -266,31 +324,57 @@ COPY public.paiement (id_paiement, id_inscription, date_paiement, montant, mode_
 
 
 --
+-- Data for Name: utilisateurs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.utilisateurs (id_utilisateur, email, mot_de_passe_hash, prenom, nom, role, derniere_connexion, tentatives_connexion_echec, compte_verrouille, token_reinitialisation, token_expiration, telephone, statut, email_verifie, date_creation, date_modification, preferences_langue, theme_preference) FROM stdin;
+1	admin@test.com	$2a$10$3DqxWDbF1o7Hdlb7Eckvu.DbGeXURalsM7ta6sSrrpGrDPPeOZ89i	Admin	Test	ADMIN	\N	0	f	\N	\N	+261340123456	ACTIF	f	2025-09-24 10:12:13.210652	2025-09-24 10:12:13.210696	fr	LIGHT
+2	user@test.com	$2a$10$P/YQlN2HdHL0gsq/b19vPuwL3g8LOP/qYU1aa2uNX.RgCZcEanzFi	Jean	Dupont	USER	\N	0	f	\N	\N	+261340654321	ACTIF	f	2025-09-24 10:12:24.919221	2025-09-24 10:12:24.919241	fr	LIGHT
+3	test@example.com	$2a$10$WBdkMpFZppbA.QDdpfsHnOuiUXy5vGyYaVZgUZ2oUfiAW6QT0fyWe	Test	User	USER	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 10:18:49.997197	2025-09-24 10:18:49.997237	fr	LIGHT
+4	admin.test.1758701885@example.com	$2a$10$061OfWRh9QKV9IdVKrz00uigontj5kxjNRKNuVX6TGCQj/ErFqd36	Admin	Test	ADMIN	\N	0	f	\N	\N	+261340000000	ACTIF	f	2025-09-24 11:18:05.935687	2025-09-24 11:18:05.935729	fr	LIGHT
+5	admin.test.1758702055@example.com	$2a$10$VCcvLsd.X37fQFQicQthK.NpJatQ9fWas.eiji79UoVsx9PLNwSj.	Admin	Test	ADMIN	\N	0	f	\N	\N	+261340000000	ACTIF	f	2025-09-24 11:20:56.123062	2025-09-24 11:20:56.123084	fr	LIGHT
+6	admin.crud.1758702915@example.com	$2a$10$O4agZs0h8zyBuLa8YI6OjuJtFf5DyEXLEfsMwqWrDgjI4eFEROv2i	Admin	Crud	ADMIN	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 11:35:16.133028	2025-09-24 11:35:16.13304	fr	LIGHT
+7	user.crud.1758702918@example.com	$2a$10$k7H6n59/rQFDQPWalWNm6uXheqNUJcjlSjbDIVRPIvCxaFOIZAOTK	U	Crud	USER	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 11:35:18.428741	2025-09-24 11:35:18.428752	fr	LIGHT
+8	admin.add.1758703169@example.com	$2a$10$8HTmJkahBWC0XoWWOZCPbeIAyX76jPp1e/HRqXWW58U0iq9.oqjLy	Admin	Test	ADMIN	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 11:39:29.698986	2025-09-24 11:39:29.698996	fr	LIGHT
+9	admin.thunder@example.com	$2a$10$nBl1IUbYl4/uul3UH4.Lp.QzIvdloAPXZmAP5CcQsVH2hBnRghoYK	Admin	Thunder	ADMIN	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 11:49:26.187521	2025-09-24 11:49:26.187529	fr	LIGHT
+10	fandresena@gmail.com	$2a$10$QuhrIDXr4q9so81vEdrw.uVW.D.ChO65Qw07KD4mwgovT/TH6to8S	fandresena	fandresena	ADMIN	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 12:30:18.389552	2025-09-24 12:30:18.389576	fr	LIGHT
+11	nofy@gmail.com	$2a$10$0h.qmuHE0m.XXjH3Mfzq1eZ39i9fBw5xWcORP9stV03XF8Gbv9G2S	nofy	nofy	USER	\N	0	f	\N	\N	\N	ACTIF	f	2025-09-24 12:31:03.94964	2025-09-24 12:31:03.949648	fr	LIGHT
+\.
+
+
+--
 -- Name: apprenant_id_apprenant_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.apprenant_id_apprenant_seq', 9, true);
+SELECT pg_catalog.setval('public.apprenant_id_apprenant_seq', 12, true);
 
 
 --
 -- Name: formation_id_formation_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.formation_id_formation_seq', 5, true);
+SELECT pg_catalog.setval('public.formation_id_formation_seq', 6, true);
 
 
 --
 -- Name: inscription_id_inscription_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.inscription_id_inscription_seq', 6, true);
+SELECT pg_catalog.setval('public.inscription_id_inscription_seq', 7, true);
 
 
 --
 -- Name: paiement_id_paiement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.paiement_id_paiement_seq', 11, true);
+SELECT pg_catalog.setval('public.paiement_id_paiement_seq', 12, true);
+
+
+--
+-- Name: utilisateurs_id_utilisateur_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.utilisateurs_id_utilisateur_seq', 11, true);
 
 
 --
@@ -342,6 +426,22 @@ ALTER TABLE ONLY public.paiement
 
 
 --
+-- Name: utilisateurs utilisateurs_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.utilisateurs
+    ADD CONSTRAINT utilisateurs_email_key UNIQUE (email);
+
+
+--
+-- Name: utilisateurs utilisateurs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.utilisateurs
+    ADD CONSTRAINT utilisateurs_pkey PRIMARY KEY (id_utilisateur);
+
+
+--
 -- Name: idx_apprenant_cin; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -377,6 +477,27 @@ CREATE INDEX idx_paiement_inscription ON public.paiement USING btree (id_inscrip
 
 
 --
+-- Name: idx_utilisateurs_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_utilisateurs_email ON public.utilisateurs USING btree (email);
+
+
+--
+-- Name: idx_utilisateurs_role; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_utilisateurs_role ON public.utilisateurs USING btree (role);
+
+
+--
+-- Name: idx_utilisateurs_statut; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_utilisateurs_statut ON public.utilisateurs USING btree (statut);
+
+
+--
 -- Name: inscription inscription_id_apprenant_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -404,5 +525,5 @@ ALTER TABLE ONLY public.paiement
 -- PostgreSQL database dump complete
 --
 
-\unrestrict ByaHdaDkb7eWXnDwrvkNGlMkEqcN94XyaCCV6cIiAJia5Z5XdnUoRXeemTyhANe
+\unrestrict U7pR4M9rBJDLv2lNkzROrlVxVfb6sD2sS7j2B4RLldmcJxiO6gr0TeWa0oZ8eNZ
 
