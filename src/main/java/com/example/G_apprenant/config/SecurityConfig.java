@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -42,9 +43,13 @@ public class SecurityConfig {
         http
                 // Désactiver CSRF pour les API REST
                 .csrf(AbstractHttpConfigurer::disable)
+                // Activer la gestion CORS de Spring Security (utilise le bean CorsConfigurationSource)
+                .cors(Customizer.withDefaults())
                 
                 // Configuration des autorisations
                 .authorizeHttpRequests(authz -> authz
+                        // Autoriser les preflight OPTIONS partout
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Routes publiques (authentification et documentation)
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
