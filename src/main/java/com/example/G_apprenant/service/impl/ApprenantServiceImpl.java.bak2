@@ -35,11 +35,9 @@ import com.example.G_apprenant.specification.ApprenantSpecification;
 @Transactional
 public class ApprenantServiceImpl implements ApprenantService {
     private final ApprenantRepository repo;
-    private final ApprenantImportService importService;
 
-    public ApprenantServiceImpl(ApprenantRepository repo, ApprenantImportService importService) {
+    public ApprenantServiceImpl(ApprenantRepository repo) {
         this.repo = repo;
-        this.importService = importService;
     }
 
     // Méthodes existantes
@@ -145,10 +143,5 @@ public class ApprenantServiceImpl implements ApprenantService {
     public long countBySearchCriteria(ApprenantSearchCriteria criteria) {
         Specification<Apprenant> spec = ApprenantSpecification.createSpecification(criteria);
         return repo.count(spec);
-    }
-
-    @Override
-    public ImportResult importApprenants(InputStream inputStream, String filename) {
-        return importService.importFile(inputStream, filename);
     }
 }

@@ -203,4 +203,13 @@ public class ApprenantController {
     public ResponseEntity<List<String>> getSortOptions() {
         return ResponseEntity.ok(List.of("nom", "prenom", "email", "telephone", "dateNaissance", "dateNow"));
     }
-}
+
+    @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Importer des apprenants via CSV ou Excel")
+    public ResponseEntity<ImportResult> importApprenants(@RequestPart("file") MultipartFile file) {
+        try {
+            ImportResult result = service.importApprenants(file.getInputStream(), file.getOriginalFilename());
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            ImportResult err = new ImportResult();
+            err.addError(0, "Erreur lors de limport:

@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.example.G_apprenant.entity.Paiement;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface PaiementRepository extends JpaRepository<Paiement, Long>, JpaSpecificationExecutor<Paiement> {
     
@@ -104,4 +106,10 @@ public interface PaiementRepository extends JpaRepository<Paiement, Long>, JpaSp
     
     // Note: Pour des calculs de sommes, moyennes et statistiques complexes,
     // nous utiliserons des méthodes dans le service avec les données récupérées
+
+    // Agrégations
+    @Query("SELECT COALESCE(SUM(p.montant), 0) FROM Paiement p WHERE p.datePaiement BETWEEN :start AND :end")
+    java.math.BigDecimal sumMontantBetween(@Param("start") java.time.LocalDate start,
+                                           @Param("end") java.time.LocalDate end);
 }
+

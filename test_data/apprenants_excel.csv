@@ -1,0 +1,4 @@
+nom,prenom,email,telephone,adresse,dateNaissance,cin
+Leroy,Paul,paul.leroy@excel.com,0567890123,123 Rue Excel,"1991-04-10",CIN101
+Petit,Emma,emma.petit@excel.com,0678901234,456 Avenue Excel,"1993-08-25",CIN102
+Roux,Luc,luc.roux@excel.com,0789012345,789 Boulevard Excel,"1989-12-03",CIN103

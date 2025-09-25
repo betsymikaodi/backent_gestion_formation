@@ -1,0 +1,5 @@
+nom,prenom,email,telephone,adresse,dateNaissance,cin
+,Jean,jean.incomplete@test.com,0123456789,123 Rue Test,,CIN011
+Dupont,,marie.incomplete@test.com,0234567890,456 Avenue Test,1992-03-22,CIN012
+Bernard,Pierre,pierre.invalid@test.com,0345678901,789 Boulevard Test,invalid-date,CIN013
+Moreau,Alice,alice.moreau@test.com,0456789012,321 Rue Valid,1995-07-12,

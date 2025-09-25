@@ -57,6 +57,8 @@ public class SecurityConfig {
                                 "/formations/**", 
                                 "/inscriptions/**", 
                                 "/paiements/**").permitAll()
+                        // Autoriser la lecture des statistiques (dashboard)
+                        .requestMatchers(HttpMethod.GET, "/stats/**").permitAll()
                         
                         // Routes publiques (authentification et documentation)
                         .requestMatchers("/auth/**").permitAll()

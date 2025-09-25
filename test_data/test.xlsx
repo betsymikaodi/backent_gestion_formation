@@ -1,0 +1,5 @@
+nom,prenom,email,telephone,adresse,dateNaissance,cin
+Dupont,Jean,jean.dupont@test.com,0123456789,123 Rue de la Paix,1990-05-15,CIN001
+Martin,Marie,marie.martin@test.com,0234567890,456 Avenue du Soleil,1992-03-22,CIN002
+Bernard,Pierre,pierre.bernard@test.com,0345678901,789 Boulevard Central,1988-11-08,CIN003
+Durand,Sophie,sophie.durand@test.com,0456789012,321 Rue des Fleurs,1995-07-12,CIN004

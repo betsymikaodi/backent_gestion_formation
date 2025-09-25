@@ -54,6 +54,7 @@ public interface ApprenantRepository extends JpaRepository<Apprenant, Long>, Jpa
     // Recherches avec pagination
     Page<Apprenant> findByNomContainingIgnoreCase(String nom, Pageable pageable);
     Page<Apprenant> findByPrenomContainingIgnoreCase(String prenom, Pageable pageable);
+    List<Apprenant> findByEmailContainingIgnoreCase(String email);
     Page<Apprenant> findByEmailContainingIgnoreCase(String email, Pageable pageable);
     Page<Apprenant> findByDateNaissanceBetween(LocalDate dateDebut, LocalDate dateFin, Pageable pageable);
     
